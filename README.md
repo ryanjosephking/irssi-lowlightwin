@@ -32,7 +32,13 @@ Perform steps #2 and #4, above.
 Configuration
 -------------
 
-Only this:
+You can do:
+
+    /set lowlight_ignore #noisychan1,#noisychan2
+
+To skip all traffic on those channels (or nicks).
+
+Also, there is:
 
     /set lowlight_say_less on
 
