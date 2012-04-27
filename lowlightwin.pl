@@ -68,7 +68,7 @@ use vars qw($VERSION %IRSSI);
 
 our $NAME = 'lowlight';
 
-$VERSION = "0.2";
+$VERSION = "0.3";
 %IRSSI = (
     authors     => "rking",
     contact     => "rking\@panoptic.com",
@@ -77,7 +77,7 @@ $VERSION = "0.2";
     license     => "Public Domain",
     url         => "http://irssi.org/",
 
-    changed     => "Thu Apr 26 21:31:17 EDT 2012",
+    changed     => "Fri Apr 27 03:41:00 EDT 2012",
 );
 
 Irssi::settings_add_bool('lowlight', 'lowlight_say_less', "0");
