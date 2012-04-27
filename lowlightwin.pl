@@ -36,7 +36,13 @@ Perform steps #2 and #4, above.
 Configuration
 -------------
 
-Only this:
+You can do:
+
+    /set lowlight_ignore #noisychan1,#noisychan2
+
+To skip all traffic on those channels (or nicks).
+
+Also, there is:
 
     /set lowlight_say_less on
 
@@ -74,7 +80,8 @@ $VERSION = "0.2";
     changed     => "Thu Apr 26 21:31:17 EDT 2012",
 );
 
-Irssi::settings_add_bool('misc', 'lowlight_say_less', "0");
+Irssi::settings_add_bool('lowlight', 'lowlight_say_less', "0");
+Irssi::settings_add_str('lowlight', 'lowlight_ignore', "");
 
 # lifted from nickcolor.pl
 my @colors = qw/31 32 33 34 35 36 37/;
@@ -97,8 +104,13 @@ sub sig_printtext {
 
     $hush |= MSGLEVEL_NOTICES|MSGLEVEL_CLIENTNOTICE|MSGLEVEL_CLIENTCRAP
         if Irssi::settings_get_bool('lowlight_say_less');
-
     return if $dest->{level} & $hush;
+
+    my @ignores = split /[, ]+/, Irssi::settings_get_str('lowlight_ignore');
+    for (@ignores) {
+        return if $dest->{target} eq $_;
+    }
+
     if (
         $dest->{level} & MSGLEVEL_PUBLIC and not $dest->{level} & $hush
     ) {
