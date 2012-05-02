@@ -117,6 +117,7 @@ sub sig_printtext {
         $color_esc = "\e[" . simple_hash($dest->{target}) . ";1m";
         $text = "$color_esc$dest->{target}\e[10;1m\e[0m: $text";
     }
+    $text =~ s/%/%%/g; # don't show %r as red, etc.
     $text = strftime(
         Irssi::settings_get_str('timestamp_format')." ",
         localtime
