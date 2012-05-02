@@ -100,7 +100,8 @@ sub simple_hash {
 sub sig_printtext {
     my ($dest, $text, $stripped) = @_;
     $window = Irssi::window_find_name($NAME);
-    my $hush = MSGLEVEL_NEVER|MSGLEVEL_JOINS|MSGLEVEL_PARTS|MSGLEVEL_QUITS;
+    my $hush = MSGLEVEL_NEVER|MSGLEVEL_JOINS|MSGLEVEL_PARTS|
+        MSGLEVEL_NICKS|MSGLEVEL_QUITS;
 
     $hush |= MSGLEVEL_NOTICES|MSGLEVEL_CLIENTNOTICE|MSGLEVEL_CLIENTCRAP
         if Irssi::settings_get_bool('lowlight_say_less');
